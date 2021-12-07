@@ -3,10 +3,12 @@ from matplotlib import colors, pyplot as plt
 # Opening Price closing price Highest price Lowest price
 df = pd.read_excel("price_0050.xlsx",engine='openpyxl')
 df.set_index('年月日',inplace = True)
+
 '''
 print(df.head(1)) # 查看第N列的資料
 print(df.shape) #確認資料大小以tuple的型別回傳，(m, n) 表示 m 列觀測值，n 欄變數
 '''
+
 df =df.drop(columns='證券代碼',axis=1)
 closing_price = df['收盤價(元)']
 
@@ -27,7 +29,7 @@ df.columns = ['open','high','low','close','20MA','up','down']
 #繪圖
 plt.figure()
 width = 1
-width2 = 0.5
+width2 = 0.1
 
 #define up and down prices
 up = df[df.close>=df.open]
